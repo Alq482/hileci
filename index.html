@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hileci Sitesi - XANTARES Modu</title>
+<style>
+  body {
+    margin: 0; padding: 0; background: #111;
+    color: #eee; font-family: 'Arial Black', Gadget, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+  }
+  .container {
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+  }
+  #xantares {
+    position: fixed;
+    bottom: -100%;
+    right: 10%;
+    width: 200px;
+    transition: bottom 0.5s ease;
+    z-index: 1000;
+    filter: drop-shadow(0 0 8px #00ff00);
+  }
+  #shout {
+    position: fixed;
+    top: 40%;
+    width: 100%;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ff0000;
+    text-shadow: 2px 2px 5px black;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1100;
+  }
+  #shout.show {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hoşgeldin Hileci!</h1>
+    <p>Burada gerçek hile yok, sadece sahte show var :)</p>
+    <button id="triggerBtn">Hileci mi sin sen?</button>
+  </div>
+
+  <img id="xantares" src="https://i.imgur.com/QkTpHhF.png" alt="XANTARES" />
+
+  <div id="shout">HİLE Cİ MİSİN SEN ORRRRRRRRRRRRRRRRRRRRRROSPU!</div>
+
+<script>
+  const xantares = document.getElementById('xantares');
+  const shout = document.getElementById('shout');
+  const btn = document.getElementById('triggerBtn');
+
+  btn.addEventListener('click', () => {
+    // Xantares yukarı fırlar
+    xantares.style.bottom = '10%';
+    // Bağırış görünür
+    shout.classList.add('show');
+
+    // 3 saniye sonra geri iner ve bağırış kaybolur
+    setTimeout(() => {
+      xantares.style.bottom = '-100%';
+      shout.classList.remove('show');
+    }, 3000);
+  });
+</script>
+</body>
+</html>
